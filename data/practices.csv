@@ -1,0 +1,182 @@
+Practice_Code,Practice_Name,Postcode,LA_Name,Longitude,Latitude,Population
+M81062,Frankley Health Centre,B45 0EU,Birmingham,-2.016653932,52.40487415,3341
+M85001,Shah Zaman Surgery,B35 7QX,Birmingham,-1.794471752,52.51682947,4780
+M85002,Handsworth Wood Medical Centre,B20 2ES,Birmingham,-1.928196198,52.51303029,18577
+M85005,The Park Medical Centre,B10 0JL,Birmingham,-1.848418383,52.46633329,8118
+M85006,Green Ridge Surgery,B13 0HN,Birmingham,-1.87103509,52.42843119,10125
+M85007,West Heath Surgery,B31 3HB,Birmingham,-1.962020091,52.40179474,12961
+M85008,The Poolway Medical Centre,B33 9EN,Birmingham,-1.795634614,52.48530376,1926
+M85009,Hamstead Road Surgery,B20 2QR,Birmingham,-1.918987664,52.50448394,6378
+M85011,The Swan Medical Centre,B25 8AA,Birmingham,-1.817596418,52.46257698,7318
+M85013,Church Lane - Khan,B33 9EJ,Birmingham,-1.793829338,52.48717055,3326
+M85014,Kingsbury Road Medical Centre,B24 8RD,Birmingham,-1.838716041,52.51531571,3529
+M85016,Hillcrest  Surgery,B44 0NN,Birmingham,-1.864752977,52.54462833,5481
+M85018,Yardley Wood Health Centre,B14 4DU,Birmingham,-1.859168317,52.41864549,10109
+M85019,Tower Hill Partnership,B42 1BT,Birmingham,-1.910671073,52.5300992,18206
+M85020,Raydocs Newtown,B19 2ET,Birmingham,-1.903172998,52.50092107,20549
+M85021,Moseley Medical Centre,B13 8JS,Birmingham,-1.889785675,52.44645713,3734
+M85023,Millenium Medical Centre,B29 5QD,Birmingham,-1.966946763,52.43763055,9570
+M85024,The Limes Medical Centre,B10 0BS,Birmingham,-1.862252356,52.46710533,6988
+M85025,Bath Row Medical Practice,B15 1LZ,Birmingham,-1.908475847,52.47262492,14594
+M85026,Dr. AP Blights Surgery,B76 1QN,Birmingham,-1.799904307,52.54070695,15243
+M85027,Leach Heath Medical Centre,B45 9BU,Birmingham,-2.013004739,52.39213567,8141
+M85028,Lordswood House Group Medical Practice,B17 9DB,Birmingham,-1.961220613,52.45905201,24843
+M85029,College Green Medical Practice,B31 2GH,Birmingham,-1.95295088,52.43006522,16487
+M85030,St Heliers Medical Practice,B31 1QT,Birmingham,-1.975786231,52.41275722,17840
+M85031,The Harlequin Surgery,B34 7BP,Birmingham,-1.777809535,52.49542134,10898
+M85033,The Manor Practice,B72 1RL,Birmingham,-1.823617216,52.55815796,17077
+M85034,Omnia Practice,B9 5PU,Birmingham,-1.839081499,52.47570652,16965
+M85035,Woodgate Valley Health Centre,B32 3SD,Birmingham,-1.991423213,52.44266022,5584
+M85037,Kingsfield Medical Centre,B14 6AA,Birmingham,-1.893010018,52.42727537,9320
+M85041,Bournbrook Varsity Medical Centre,B29 7DU,Birmingham,-1.929909006,52.44569651,13430
+M85042,Selly Park Surgery,B29 7NT,Birmingham,-1.916435326,52.44404261,5188
+M85043,Hawkesley Medical Practice,B38 9TJ,Birmingham,-1.937497983,52.39543737,4224
+M85046,Sutton Coldfield Group Practice,B75 6DX,Birmingham,-1.806688148,52.57735184,53560
+M85047,Woodland Road Surgery,B31 2HZ,Birmingham,-1.962174616,52.41021848,6030
+M85048,Church Road Surgery,B26 3TP,Birmingham,-1.780760189,52.45886459,11228
+M85051,Firstcare practice,B12 9LP,Birmingham,-1.888066047,52.45738737,6752
+M85053,The St Clements Surgery,B7 5PR,Birmingham,-1.86797387,52.49818115,6512
+M85055,Selly Oak Health Centre,B29 6JG,Birmingham,-1.939144063,52.43824887,6754
+M85056,Weoley Park Surgery,B29 5HA,Birmingham,-1.956825859,52.4380858,7474
+M85058,Harborne Medical Practice,B17 0HG,Birmingham,-1.946283317,52.45857872,15980
+M85060,The Oaks Medical Centre,B44 9ER,Birmingham,-1.895833273,52.55243592,14095
+M85061,Yardley Green Medical Centre,B9 5PU,Birmingham,-1.839081499,52.47570652,11319
+M85062,Shenley Green Surgery,B29 4HH,Birmingham,-1.973896422,52.42643069,5196
+M85063,Midlands Medical Partnership,B24 0SY,Birmingham,-1.813130224,52.51980006,59726
+M85065,Dr. SN Clay and Partners,B24 9JN,Birmingham,-1.832004672,52.52863842,13724
+M85066,Ward End Medical Centre,B8 2JN,Birmingham,-1.826483955,52.49315624,7470
+M85069,Laurie Pike Health Centre,B6 6BB,Birmingham,-1.899141711,52.50516995,16070
+M85070,Reservoir Road Surgery,B23 6DJ,Birmingham,-1.857329285,52.52387998,13418
+M85071,Wychall Lane Surgery,B38 8TE,Birmingham,-1.935566439,52.4099643,8167
+M85074,Wake Green Surgery,B13 9HD,Birmingham,-1.883357069,52.44610037,7989
+M85076,Hollymoor Medical Centre,B31 5ER,Birmingham,-1.998823971,52.40397635,7512
+M85077,Northwood Medical Centre,B30 1BY,Birmingham,-1.93297077,52.41548277,9418
+M85078,Oakwood Surgery,B13 9LH,Birmingham,-1.86528697,52.44217954,10759
+M85079,Eden Court Medical Practice,B35 6EE,Birmingham,-1.794008964,52.51810524,10185
+M85081,The Dove Medical Practice,B23 5DD,Birmingham,-1.864605125,52.53515284,9553
+M85082,Handsworth Medical Practice,B21 9NH,Birmingham,-1.941585781,52.50539619,4999
+M85084,The Wand Medical Practice,B12 0UF,Birmingham,-1.888681759,52.46418438,6042
+M85086,Cofton Medical Centre,B31 4TU,Birmingham,-1.966803697,52.39274315,10385
+M85087,College Road Surgery,B44 0HL,Birmingham,-1.874212675,52.53676362,11239
+M85088,Karis Medical Centre,B16 9AL,Birmingham,-1.931659358,52.47461832,17505
+M85094,Yardley Medical Centre,B25 8BY,Birmingham,-1.828397288,52.46318646,2296
+M85097,Cranes Park Road Surgery,B26 3SE,Birmingham,-1.779463033,52.456327,2077
+M85098,Rotton Park Medical Centre,B16 0LU,Birmingham,-1.947079332,52.48215978,5239
+M85105,Victoria Road Surgery,B27 7XZ,Birmingham,-1.819642642,52.44444727,4808
+M85107,Firs Surgery,B36 8LR,Birmingham,-1.80150418,52.50630527,3220
+M85108,Small Heath Medical Practice,B10 9QE,Birmingham,-1.861882062,52.47255283,6253
+M85110,Saltley and Fernbank Medical Practice,B8 1RZ,Birmingham,-1.851957326,52.49083542,10868
+M85113,Bucklands End Lane Surgery,B34 6BP,Birmingham,-1.799863173,52.49780702,6197
+M85115,Sutton Road Surgery,B23 5TJ,Birmingham,-1.828592354,52.53430615,1992
+M85116,Fernley Medical Centre,B11 4AN,Birmingham,-1.864566697,52.45160026,8533
+M85117,Bartley Green Medical Practice,B32 3PR,Birmingham,-2.003044934,52.4362326,5828
+M85118,Baldwins Lane Surgery,B28 0RF,Birmingham,-1.846228771,52.41450297,3261
+M85123,Al-Shafa Medical Centre,B6 6JY,Birmingham,-1.891581277,52.50625106,8813
+M85124,Bellevue Medical Centre,B5 7LX,Birmingham,-1.900851527,52.46539085,12237
+M85128,Dr Walji and colleagues,B12 9LP,Birmingham,-1.888066047,52.45738737,5132
+M85134,West Heath Primary Care Centre,B38 8AX,Birmingham,-1.953645229,52.39888797,2989
+M85136,Druids Heath Surgery,B14 5SB,Birmingham,-1.898795775,52.40529076,11356
+M85139,Alpha Medical Practice,B8 1JA,Birmingham,-1.85625804,52.4907688,5578
+M85141,Schoolacre Road Surgery,B34 6RB,Birmingham,-1.785796684,52.49765656,2959
+M85142,Keynell Covert,B30 3QT,Birmingham,-1.911857126,52.40843873,1629
+M85143,Jiggins Lane Medical Centre,B32 3LE,Birmingham,-1.995410644,52.43679894,7325
+M85145,The Slieve Surgery,B20 2NR,Birmingham,-1.927167982,52.52000583,8789
+M85146,The Khattak Memorial Surgery,B11 1TX,Birmingham,-1.863748932,52.45912395,5862
+M85149,Alum Rock Medical Centre,B8 3QD,Birmingham,-1.850664452,52.48989885,5711
+M85153,Weather Oak Medical C entre,B11 4RA,Birmingham,-1.867537876,52.45690772,3463
+M85154,Finch Road Primary Care Centre,B19 1HS,Birmingham,-1.910473855,52.50376762,4498
+M85155,Kingstanding Circle Surgery,B44 0UY,Birmingham,-1.881464341,52.55394172,6130
+M85156,River Brook Medical Centre,B30 2SH,Birmingham,-1.913808574,52.43302795,10009
+M85158,Apollo Surgery,B44 9HW,Birmingham,-1.893895794,52.55469964,2192
+M85164,Newport Medical Practice,B12 8QE,Birmingham,-1.879632777,52.45222784,13169
+M85167,University Medical Practice,B15 2QU,Birmingham,-1.937986783,52.45584172,12620
+M85170,Gate Medical Centre,B8 1RE,Birmingham,-1.855863797,52.49423844,5010
+M85171,Rowlands Road Surgery,B26 1AT,Birmingham,-1.806157259,52.46326903,2791
+M85172,Ridgacre House Surgery,B32 2TJ,Birmingham,-1.990109898,52.46090982,13482
+M85174,The Brook Surgery,B11 1JU,Birmingham,-1.877785979,52.46557609,4341
+M85175,The Hawthorns Surgery,B72 1DL,Birmingham,-1.825965455,52.53874333,10765
+M85176,Kirpal Medical Practice,B21 9RY,Birmingham,-1.934944773,52.50309133,5360
+M85177,Swanswell Medical Centre,B27 7AL,Solihull,-1.816529011,52.43251271,6211
+M85178,Modality Enki Medical Practice,B19 1BP,Birmingham,-1.920540481,52.50118569,10678
+M85179,Maypole Health Surgery (Y),B14 5DJ,Birmingham,-1.884717057,52.40973698,4636
+M85600,Kings Norton Surgery,B38 8QS,Birmingham,-1.930752977,52.40458553,14135
+M85624,Perry Park Surgery,B44 0UJ,Birmingham,-1.879949253,52.55245687,6319
+M85634,Heathfield Family Centre,B19 1HL,Birmingham,-1.910085592,52.50633845,9019
+M85642,Cavendish Medical Practice,B18 7AL,Birmingham,-1.937353135,52.48768387,5748
+M85669,Tudor Practice Stockland Green,B23 6DJ,Birmingham,-1.857329285,52.52387998,6256
+M85670,Greenfield Medical Centre,B8 1RT,Birmingham,-1.855769092,52.4916672,3448
+M85676,Victoria Road Medical Centre,B6 5HP,Birmingham,-1.887202117,52.50185091,5988
+M85679,Charles Road Surgery,B10 9AB,Birmingham,-1.850621219,52.47219755,5650
+M85680,Cotterills  Lane Surgery,B8 3RZ,Birmingham,-1.828603623,52.48588645,2427
+M85684,City Road Medical Centre,B16 0HH,Birmingham,-1.942009513,52.48558258,3397
+M85686,Dr Kulshrestha Family Practice,B18 7AL,Birmingham,-1.937353135,52.48768387,1532
+M85693,Featherstone Medical Centre,B14 6AA,Birmingham,-1.893010018,52.42727537,2459
+M85694,Garretts Green Lane Surgery,B26 2SD,Birmingham,-1.786418486,52.46960899,3425
+M85697,Church Road Surgery - West,B6 5UP,Birmingham,-1.875236083,52.50331327,4565
+M85699,Coventry Road Medical Centre,B10 0UG,Birmingham,-1.85907801,52.47011325,5402
+M85701,Burbury Medical Centre,B19 1TT,Birmingham,-1.910373884,52.50221229,4334
+M85706,Druid Group,B18 4HL,Birmingham,-1.942008607,52.48627481,13635
+M85711,City Health Centre,B17 8LG,Birmingham,-1.958201725,52.47668932,3030
+M85713,Highgate Medical Centre,B12 0YA,Birmingham,-1.887459642,52.46436303,5084
+M85715,Soho Road Primary Care Centre,B21 9RY,Birmingham,-1.934944773,52.50309133,11366
+M85716,Dr Khuroos Practice,B23 6DJ,Birmingham,-1.857329285,52.52387998,5015
+M85717,Downsfield Medical Centre,B26 2TY,Birmingham,-1.779689757,52.46693562,4396
+M85721,Holyhead Primary Health Care Centre,B21 0HL,Birmingham,-1.94830349,52.50569597,10529
+M85722,Naseby Medical Centre,B8 3HE,Birmingham,-1.844952764,52.48917232,5583
+M85730,Ley Hill Surgery,B31 1TR,Birmingham,-1.983266196,52.421344,2840
+M85732,Bloomsbury Surgery,B7 5BT,Birmingham,-1.871891696,52.49324098,2340
+M85733,Moor Green Lane Medical Centre,B13 8QS,Birmingham,-1.910532903,52.43817681,6974
+M85735,Greet Medical Practice,B11 3ND,Birmingham,-1.857778129,52.45319253,6193
+M85736,Acocks Green Medical Centre,B27 6QJ,Birmingham,-1.829318609,52.44947803,5534
+M85739,Pak Health Centre,B8 1JA,Birmingham,-1.85625804,52.4907688,5273
+M85746,Mirfield Surgery,B33 9SA,Birmingham,-1.78155273,52.48312104,5822
+M85749,Surgery Aubrey Road,B10 0TU,Birmingham,-1.846416596,52.46631273,3054
+M85756,Springfield Medical Practice,B11 4DG,Birmingham,-1.859628963,52.44495089,2874
+M85757,Saini and Saini - Soho Medical Services,B21 9RY,Birmingham,-1.934944773,52.50309133,4074
+M85759,Nechells Practice,B7 5DT,Birmingham,-1.87661816,52.49374044,7220
+M85766,Balsall Heath Health Centre (S),B12 9LP,Birmingham,-1.888066047,52.45738737,3841
+M85770,The Sheldon Medical Centre,B26 3TT,Birmingham,-1.777676299,52.46045906,2202
+M85774,Springfield Surgery,B11 4BW,Birmingham,-1.858644498,52.44455416,6942
+M85778,Halcyon Medical,B2 4UH,Birmingham,-1.895752319,52.48057953,14935
+M85779,Aylesbury Surgery,B44 0DX,Birmingham,-1.876053196,52.5428517,2843
+M85781,Bordesley Green Surgery,B9 5EG,Birmingham,-1.855228795,52.47677018,3757
+M85783,Strensham Road Surgery,B12 9RR,Birmingham,-1.89256321,52.45384048,5435
+M85792,Cotmore Surgery,B44 8TU,Birmingham,-1.894647447,52.54258199,3244
+M85794,The Balaji Surgery  Sparkbrook CHC,B11 1LU,Birmingham,-1.871332703,52.46265651,3552
+M85797,Hockley Medical Practice,B1 3AL,Birmingham,-1.915384239,52.48596216,9918
+M85803,Pearl Medical Centre,B8 2HB,Birmingham,-1.834685268,52.49381524,11172
+M88020,Sherwood House Medical Practice,B17 8DP,Birmingham,-1.959426329,52.47384891,13068
+M89001,Parkfield Medical Centre,B36 9EJ,Solihull,-1.775824418,52.50926211,3557
+M89002,Kingshurst Medical Practice,B37 6BE,Solihull,-1.747784629,52.49400374,6230
+M89003,GPS Healthcare,B90 4DD,Solihull,-1.825222084,52.39514515,40109
+M89005,St Margarets Medical Practice,B92 7JS,Solihull,-1.806474589,52.43785477,8429
+M89007,Richmond Medical Centre,B92 7SA,Solihull,-1.799163578,52.44759678,6403
+M89008,Bosworth Medical Group,B37 5BU,Solihull,-1.753633329,52.48056705,13251
+M89009,Manor House Lane Surgery,B26 1PE,Birmingham,-1.802707177,52.46130351,11160
+M89010,Dorridge Surgery,B93 8LH,Solihull,-1.752073799,52.37275499,10904
+M89012,Croft Medical Centre,B37 7WB,Solihull,-1.728648387,52.47780646,11269
+M89013,Arran Medical Centre,B36 0PU,Solihull,-1.745414924,52.50137942,6079
+M89015,Northbrook Health Centre,B90 3LX,Solihull,-1.821272884,52.4196552,12212
+M89016,Balsall Common and Meriden Group Practice,CV7 7RW,Solihull,-1.643861703,52.39495408,12917
+M89017,Solihull Healthcare Partnership,B91 2AG,Solihull,-1.775234695,52.41963969,56503
+M89019,Hobs Moat Medical Centre,B92 8ED,Solihull,-1.78892466,52.44418973,11018
+M89021,Coventry Road Practice,B26 3JS,Birmingham,-1.77583624,52.45182518,4575
+M89024,Grafton Road Surgery,B90 1NG,Solihull,-1.868449276,52.40775121,4127
+M89026,The Castle Practice,B36 0HH,Solihull,-1.757657215,52.50127024,10896
+M89027,Green Lane Surgery,B36 0BU,Solihull,-1.757922487,52.5066198,7999
+M89030,Arden Medical Centre,B93 0QA,Solihull,-1.744762466,52.3797967,5625
+M89608,Hampton Surgery,B92 0AH,Solihull,-1.701801604,52.42417928,3538
+M91642,Queslett Medical Centre,B43 7DY,Walsall,-1.898033817,52.55749911,1551
+Y00159,Hall Green Health,B28 8BG,Birmingham,-1.849711739,52.44092918,30553
+Y00412,Dr Bhalla's Practice,B21 9RY,Birmingham,-1.934944773,52.50309133,5742
+Y00471,Broadway Health Centre,B18 7BA,Birmingham,-1.924122275,52.48277663,6677
+Y00492,Summerfield Group Practice,B18 7AL,Birmingham,-1.937353135,52.48768387,8866
+Y01057,Homeless Health Exchange,B4 6HJ,Birmingham,-1.899657123,52.48580606,1224
+Y01068,Amaanah Medical Practice,B8 1RZ,Birmingham,-1.851957326,52.49083542,4728
+Y02567,Hodge Hill Family Practice,B36 8NG,Birmingham,-1.800613495,52.50126941,6314
+Y02571,Poplar Primary Care Centre,B14 7AG,Birmingham,-1.890325771,52.4363079,7731
+Y02794,Oakleaf,B8 3SN,Birmingham,-1.849491717,52.48829715,12293
+Y02893,Iridium Medical Practice,B33 8TA,Birmingham,-1.817517927,52.47802166,18767
+Y03597,Hamd Medical Practice,B8 3SW,Birmingham,-1.849052677,52.4874875,6778
+Y05826,The Hill GP Practice,B11 4BW,Birmingham,-1.858644498,52.44455416,6184
+Y06378,Heath Street,B18 7AL,Birmingham,-1.937353135,52.48768387,6202

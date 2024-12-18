@@ -1,0 +1,577 @@
+---
+title: "Creating Interactive Maps in R with Leaflet"
+author:
+  name: "Archie Atack - NHS Birmingham and Solihull ICB"
+  email: "nhsbsolicb.bi@nhs.net"
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+format: 
+  html:
+    toc: true
+    toc-title: "Contents"
+    toc-location: "left"
+    toc-depth: 3
+    embed-resources: true
+    toc-collapse: true
+execute:
+  echo: false
+---
+
+## Introduction
+
+Leaflet is a package in R that can create interactive maps. Most leaflet maps can be built out a few components:
+
+-   Markers
+
+-   Polygons
+
+-   Map tile background
+
+-   Legend
+
+-   Layer toggle
+
+The maps output as a html file which can be opened in a web browser and shared easily:
+
+-   The file can be shared via email
+
+-   Hosted on a sharepoint page - change the file extension from html to aspx and upload as a site owner
+
+-   Embedded within an R Markdown / Quarto document or Shiny dashboard
+
+The leaflet package is well documented and multiple examples can be found here:
+
+-   <https://rstudio.github.io/leaflet/>
+
+## Libraries and Data
+
+The libraries used in the code below are:
+
+-   tidyverse
+
+-   leaflet
+
+-   sf - used to load spatial polygons of shapefiles (e.g. lower layer super output areas (LSOA) / local authority shapefiles)
+
+-   crosstalk - to add map marker filters
+
+-   htmltools - to optimise the map functionality when using crosstalk
+
+Data included:
+
+-   Birmingham and Solihull ICS GP practices and acute providers including longitude / latitude co-ordinates.
+
+-   Index of multiple deprivation (IMD) deciles for LSOAs within BSOL
+
+-   BSOL LSOA and local authority shapefiles
+
+```{r map_setup_markdown, eval=FALSE}
+
+library(tidyverse)
+library(leaflet)
+library(sf)
+library(crosstalk)
+library(htmltools)
+
+practices <- read_csv("practices.csv")
+lsoa_data <- read_csv("bsol_imd.csv")
+lsoa <- st_read("lsoa.shp")
+local_authority <- st_read("local_authority.shp")
+
+```
+
+```{r map_setup_hidden, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Hidden chunk that loads all the required assets to keep the Markdown file neat
+
+library(tidyverse)
+library(leaflet)
+library(sf)
+library(crosstalk)
+library(htmltools)
+library(DT)
+
+practices <- read_csv("data/practices.csv")
+lsoa_data <- read_csv("data/bsol_imd.csv")
+lsoa <- st_read("data/lsoa.shp")
+local_authority <- st_read("data/local_authority.shp")
+
+```
+
+## Background Tiles
+
+A leaflet map begins with a leaflet function and each layer is added on top using the pipe operator (\|\>).
+
+The addTiles() function adds a background map from OpenStreetMap.
+
+```{r map_tiles, warning = FALSE, message=FALSE}
+
+leaflet() |> 
+  addTiles()
+```
+
+## Markers
+
+Markers can be added to the map using the addAwesomeMarkers function. The customisation provided by addAwesomeMarkers makes it more useful than addMarkers.
+
+The below code maps the main branch site for Birmingham and Solihull GP practices.
+
+```{r map_markers, warning = FALSE, message=FALSE}
+
+leaflet() |>  
+  addTiles() |> 
+  addAwesomeMarkers(
+    data = practices,
+    lng = ~ Longitude,
+    lat = ~ Latitude,
+    popup = ~ paste(
+      "Practice Name:", Practice_Name,
+      "<br><br>",
+      "Local Authority:", LA_Name,
+      "<br><br>",
+      "Population:", Population
+    )
+  )
+
+```
+
+The data source, longitude, latitude, and pop-up (data to appear when the marker is clicked) arguments are defined.
+
+-   The tilde sign (\~) is used to reduce repeated reference to the data source. In other words, it is rewriting "practices\$Longitude" as "\~Longitude".
+
+-   HTML can be used within a paste (concatenate) function to format the popup text. A single \<br\> adds a line break.
+
+It is worth noting that as the co-ordinates were derived from postcodes, the markers will not exactly match the map underlay but will be in the correct general area.
+
+addCircleMarkers() is a useful alternative for visualising a numeric value of a marker. addCircleMarkers() provides the ability to adjust the marker radius and colour based upon a value.
+
+## Customised Markers
+
+Using the awesomeIcons() function, custom markers can be created, The custom icon is then referenced in the icon argument of addAwesomeMarkers.
+
+```{r map_customised_markers, message=FALSE}
+
+map_icons <- awesomeIcons(
+  markerColor = "green",
+  icon = "ios-close",
+  iconColor = "black",
+  library = "ion"
+)
+
+leaflet() |>
+  addTiles() |>
+  addAwesomeMarkers(
+    data = practices,
+    lng = ~ Longitude,
+    lat = ~ Latitude,
+    popup = ~ paste(
+      "Practice Name:", Practice_Name,
+      "<br><br>",
+      "Local Authority:", LA_Name,
+      "<br><br>",
+      "Population:", Population
+    ),
+    icon = map_icons
+  )
+
+```
+
+To create a custom marker, the markerColor, icon, iconColor, and library have to be defined:
+
+-   The markerColor argument will only allow certain colours. Check the awesomeIcons function documentation to find the list of marker colours available.
+
+-   The icon is the symbol that sits within the marker.
+
+-   The icon library chosen is "ion". Alternatives are "fa" and "glyphicon".
+
+-   Any colour can be used for the icon colour.
+
+The list of available ion icons can be found here - <https://ionicons.com/v2/cheatsheet.html> - use the classname in the icon argument. FA and glyphicon icon lists are also available online.
+
+## Conditionally Customised Markers
+
+Markers can also be conditionally coloured based upon a value in the data.
+
+The below map colours practices by whether they reside in the Birmingham or Solihull local authority area.
+
+```{r map_conditional_markers, message=FALSE}
+
+get_colour <- function(x) {
+  case_when(
+    x$LA_Name == "Birmingham" ~ "green",
+    x$LA_Name == "Solihull" ~ "lightblue",
+    TRUE ~ "lightgray"
+  )
+}
+
+map_icons <- awesomeIcons(
+  markerColor = get_colour(practices),
+  icon = "ios-close",
+  iconColor = "black",
+  library = "ion"
+)
+
+leaflet() |>
+  addTiles() |>
+  addAwesomeMarkers(
+    data = practices,
+    lng = ~ Longitude,
+    lat = ~ Latitude,
+    popup = ~ paste(
+      "Practice Name:", Practice_Name,
+      "<br><br>",
+      "Local Authority:", LA_Name,
+      "<br><br>",
+      "Population:", Population
+    ),
+    icon = map_icons
+  )
+
+```
+
+The function get_colour applies each row of the data to the case_when logic and returns a colour that passes through to the awesomeIcons marker colour argument. If a record does not meet any of the conditions in the case_when (i.e the local authority is neither Birmingham or Solihull) it will be plotted as lightgray.
+
+## Polygons
+
+Map boundaries can be added by using the addPolygons() function. BSOL local authority boundaries are added as a reference.
+
+```{r map_wards, message = FALSE, warning = FALSE, rgdal_show_exportToProj4_warnings = "none"}
+
+leaflet() |>
+  addTiles() |>
+  addAwesomeMarkers(
+    data = practices,
+    lng = ~ Longitude,
+    lat = ~ Latitude,
+    popup = ~ paste(
+      "Practice Name:", Practice_Name,
+      "<br><br>",
+      "Local Authority:", LA_Name,
+      "<br><br>",
+      "Population:", Population
+    ),
+    icon = map_icons
+  ) |>
+  addPolygons(
+    data = local_authority,
+    color = "black",
+    weight = 3,
+    fillColor = "transparent"
+  )
+```
+
+The color, weight, and fillColor arguments define how the polygon appears:
+
+-   color defines the colour of the edge of each polygon
+
+-   weight defines the thickness of the edge of each polygon
+
+-   fillColor defines the fill of the inside of each polygon
+
+## Choropleth Plots + Legends
+
+Choropleth plots can also be added using the addPolygons() function with a few additional steps. First the shapefile needs to be enriched with the data to plot and then a palette needs to be defined to detail which colours and scale will be used.
+
+```{r map_choropleth, message = FALSE, warning = FALSE, rgdal_show_exportToProj4_warnings = "none"}
+
+lsoa_plot <- lsoa |> 
+  merge(lsoa_data, by = "LSOA11C")
+
+map_pal <- colorNumeric(
+  palette = "Reds",
+  domain = lsoa_plot$Decile,
+  reverse = TRUE
+)
+
+leaflet() |>
+  addTiles() |>
+  addPolygons(
+    data = local_authority,
+    color = "black",
+    weight = 3,
+    fillColor = "transparent"
+  ) |>
+  addPolygons(
+    data = lsoa_plot,
+    fillColor = ~ map_pal(Decile),
+    opacity = 0,
+    fillOpacity = 0.7,
+    popup = ~ paste(Decile)
+  ) |>
+  addLegend(
+    data = lsoa_plot,
+    position = "bottomright",
+    pal = map_pal,
+    values = ~Decile
+  )
+
+```
+
+The LSOA shapefile is enriched by joining it to the BSOL IMD decile data by the LSOA name.
+
+A continous scale is defined for the palette using the colorNumeric() function:
+
+-   the palette argument defines the colours used (potential colour scales can be found here - <http://www.sthda.com/english/wiki/colors-in-r>)
+
+-   the domain argument specifies which value to plot
+
+-   the reverse argument can reverse the colour scale (for this plot this ensures areas with low IMD deciles are represented in red and areas with high IMD deciles are represented in yellow)
+
+The lsoa_plot is added as an additional addPolygons() layer:
+
+-   The fillOpacity is set to 0.7 so the map underlay can still be seen through the plot.
+
+-   A pop-up argument is specified so that each LSOA can be clicked to reveal the IMD decile for the area. The plot is added after the wards to ensure that it is above the wards layer and therefore will show the IMD pop-up info when clicked.
+
+A legend is added as a reference using the addLegend() function.
+
+## Layers
+
+Leaflet enables layers of the map to be toggled on and off so multiple features can be built into one file.
+
+```{r map_layers, message = FALSE, warning = FALSE, rgdal_show_exportToProj4_warnings = "none"}
+
+leaflet() |>
+  addTiles() |>
+  addAwesomeMarkers(
+    data = practices,
+    lng = ~ Longitude,
+    lat = ~ Latitude,
+    popup = ~ paste(
+      "Practice Name:", Practice_Name,
+      "<br><br>",
+      "Local Authority:", LA_Name,
+      "<br><br>",
+      "Population:", Population
+    ),
+    icon = map_icons,
+    group = "Practices"
+  ) |>
+  addPolygons(
+    data = local_authority,
+    color = "black",
+    weight = 3,
+    fillColor = "transparent",
+    group = "LA Boundaries"
+  ) |>
+  addPolygons(
+    data = lsoa_plot,
+    fillColor = ~ map_pal(Decile),
+    opacity = 0,
+    fillOpacity = 0.7,
+    popup = ~ paste(Decile),
+    group = "IMD"
+  ) |>
+  addLegend(
+    data = lsoa_plot,
+    position = "bottomright",
+    pal = map_pal,
+    values = ~Decile,
+    group = "IMD"
+  ) |>
+  addLayersControl(
+    overlayGroups = c(
+      "Practices",
+      "LA Boundaries",
+      "IMD"
+    ),
+    options = layersControlOptions(collapsed = FALSE)
+  ) |>
+  hideGroup(group = "Practices")
+
+```
+
+Each layer of the map can be assigned to a group using the "group" argument:
+
+-   addLayersControl() adds a toggle to turn off each layer by their group name. This displays in a box in the top right corner of the map.
+
+    -   The overlayGroup argument includes all layer groups to toggle on / off
+
+    -   layersControlOptions(collapsed = FALSE) programs if the toggle box collapses or not when the cursor moves away from it
+
+-   By applying the same group name of "IMD" to the choropleth plot and legend, the toggle will turn both the plot and the legend on and off at the same time.
+
+-   The hideGroup option allows layers to be toggled off when the map first opens (e.g. the practice markers are hidden for this map when the file is loaded). Hidden layers can be toggled on from the LayersControl.
+
+## Crosstalk
+
+Crosstalk is a package that enables interaction between html widgets such as leaflet, plotly, and DT. Examples can be found here:
+
+-   <https://rstudio.github.io/crosstalk/>
+
+-   <https://matt-dray.github.io/earl18-crosstalk/04_leaflet-flexdash-dt-crosstalk.html>
+
+Leaflet can be combined with the crosstalk package to enable greater functionality. In particular, crosstalk can allow the user to filter markers.
+
+```{r map_crosstalk_fake, eval = FALSE}
+
+practices_sd <- SharedData$new(practices)
+
+bscols(
+  widths = c(2, 10), # splits width of page - 2/12 for filters + 10/12 for map
+  div(
+    style = css(height = "100vh", overflow = "auto"), # ensures filters do not overflow page
+    list(
+      filter_select(
+        id = "Filter 1",
+        label = "Practice Name",
+        sharedData = practices_sd,
+        group = ~Practice_Name
+      ),
+      filter_select(
+        id = "Filter 2",
+        label = "Local Authority",
+        sharedData = practices_sd,
+        group = ~LA_Name
+      )
+    )
+  ),
+  leaflet(height = "100vh") |> # map scales to size of page
+    addTiles() |>
+    addAwesomeMarkers(
+      data = practices_sd,
+      lng = ~Longitude,
+      lat = ~Latitude,
+      popup = ~ paste(
+        "Practice Name:", Practice_Name,
+        "<br><br>",
+        "Local Authority:", LA_Name,
+        "<br><br>",
+        "Population:", Population
+      ),
+      icon = map_icons,
+      group = "Practices"
+    ) |>
+    addPolygons(
+      data = local_authority,
+      color = "black",
+      weight = 3,
+      fillColor = "transparent",
+      group = "LA Boundaries"
+    ) |>
+    addPolygons(
+      data = lsoa_plot,
+      fillColor = ~ map_pal(Decile),
+      opacity = 0,
+      fillOpacity = 0.7,
+      popup = ~ paste(Decile),
+      group = "IMD"
+    ) |>
+    addLegend(
+      data = lsoa_plot,
+      position = "bottomright",
+      pal = map_pal,
+      values = ~Decile,
+      group = "IMD"
+    ) |>
+    addLayersControl(
+      overlayGroups = c(
+        "Practices",
+        "LA Boundaries",
+        "IMD"
+      ),
+      options = layersControlOptions(collapsed = FALSE)
+    ) |>
+    hideGroup(group = "IMD")
+)
+
+```
+
+```{r map_crosstalk_real, message = FALSE, warning = FALSE, rgdal_show_exportToProj4_warnings = "none", echo = FALSE}
+
+# Calculated map hidden - required to make viewer height 50vh so Markdown document map isn't too big
+
+practices_sd <- SharedData$new(practices)
+
+# htmltools functions used instead of bscols to fit quarto output
+htmltools::tags$div(
+  style = "display: flex; gap: 10px;", # flex layout with spacing between columns
+  htmltools::tags$div(
+    style = "flex: 0 0 20%; max-height: 50vh; overflow-y: auto;", # filters take 20% width and are scrollable
+    list(
+      filter_select(
+        id = "Filter 1",
+        label = "Practice Name",
+        sharedData = practices_sd,
+        group = ~Practice_Name
+      ),
+      filter_select(
+        id = "Filter 2",
+        label = "Local Authority",
+        sharedData = practices_sd,
+        group = ~LA_Name
+      )
+    )
+  ),
+  leaflet(height = "50vh") |> # Map takes the remaining space
+    addTiles() |>
+    addAwesomeMarkers(
+      data = practices_sd,
+      lng = ~Longitude,
+      lat = ~Latitude,
+      popup = ~ paste(
+        "Practice Name:", Practice_Name,
+        "<br><br>",
+        "Local Authority:", LA_Name,
+        "<br><br>",
+        "Population:", Population
+      ),
+      icon = map_icons,
+      group = "Practices"
+    ) |>
+    addPolygons(
+      data = local_authority,
+      color = "black",
+      weight = 3,
+      fillColor = "transparent",
+      group = "LA Boundaries"
+    ) |>
+    addPolygons(
+      data = lsoa_plot,
+      fillColor = ~ map_pal(Decile),
+      opacity = 0,
+      fillOpacity = 0.7,
+      popup = ~ paste(Decile),
+      group = "IMD"
+    ) |>
+    addLegend(
+      data = lsoa_plot,
+      position = "bottomright",
+      pal = map_pal,
+      values = ~Decile,
+      group = "IMD"
+    ) |>
+    addLayersControl(
+      overlayGroups = c(
+        "Practices",
+        "LA Boundaries",
+        "IMD"
+      ),
+      options = layersControlOptions(collapsed = FALSE)
+    )
+)
+
+
+```
+
+Crosstalk first requires a SharedData object to be created. Then interactive filters can be added with a few chunks of code and a couple adjustments to how the map functions.
+
+-   The map is wrapped in the bscols function to format how the output is arranged. The filters are listed first in the code which places the filters on the left side of the screen. The leaflet code follows after and therefore the map is placed on the right.
+
+-   The widths of the filters and the map are defined. The width argument takes only integers up to a total of 12. The filters are given 2/12 of the screen and the map is given 10/12.
+
+-   There are three types of filter included in the crosstalk package - filter_select and filter_slider are used here. Both require four arguments:
+
+    -   The id is a unique identifier that can be given any name as long as it is unique.
+    -   The label argument takes the text to be shown above each filter.
+    -   The sharedData object
+    -   The group / column takes the field that will go in to the filter.
+    -   Min / max / step arguments can be used to improve the functionality of the filter_slider
+
+-   If there is more than one filter for the map then they need to be wrapped in a list.
+
+-   To ensure that the map functions as intended, the filters are grouped under a htmltools div function so that a couple of rules (i.e. CSS) can be applied:
+
+    -   The height is specified to the '100vh' or 100% viewer height, in other words, it automatically scales to the size of the user's monitor. To ensure that the leaflet map acts similarly, viewer height also has to be programmed under the leaflet function - e.g. leaflet(height = "100vh").
+
+    -   Overflow is set to "auto" so that a scrollbar appears if the filters extend past the length of the screen.
