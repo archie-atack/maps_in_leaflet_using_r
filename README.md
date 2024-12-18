@@ -1,0 +1,1 @@
+Starter guide to create interactive maps with leaflet using R
