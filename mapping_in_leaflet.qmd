@@ -12,6 +12,7 @@ format:
     toc-depth: 3
     embed-resources: true
     toc-collapse: true
+    output-file: "index.html"
 project:
   type: default
   output-dir: _output
